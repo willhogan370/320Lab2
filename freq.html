@@ -1,0 +1,28 @@
+<html>
+  <head>
+
+    <script>
+      /**
+      @arg {string} str - The string to search within.
+      @returns {object} - An object with an entry for each character 
+                      and the number of times it is in `str`.
+      @desc Case sensitive.
+     */
+     function letterHistogram(str) {
+       let counter = {};
+       str.split('').forEach( elem => {
+         if (elem in counter) {
+           counter[elem] = counter[elem] + 1; 
+         } else {
+           counter[elem] = 1; 
+         }
+       });
+       return counter;
+     } 
+
+     console.assert(JSON.stringify(letterHistogram("")) === JSON.stringify({}))
+     console.assert(JSON.stringify(letterHistogram(" ")) === JSON.stringify({" " : 1}))
+     console.assert(JSON.stringify(letterHistogram("test")) === JSON.stringify({t : 2, e : 1, s : 1}))
+    </script>
+  </head>
+</html>

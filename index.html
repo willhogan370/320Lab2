@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <title>Lecture 02 Introduction to JavaScript</title>
+</head>
+<script>
+  /**
+    @arg {string} str - The string to search within.
+    @arg {string} char - The character to search for.
+    @returns {number} - The number of times `char` is in 
+                      `str`.
+    @desc Case sensitive.
+  */
+  function letterFrequency(str, char) {
+    let count = 0;
+    for(let i = 0; i < str.length; i++) {
+      if (str[i] === char)
+        count++; 
+    }
+    return count;
+  }
+
+  /**                                                                                                                                                                      
+  @arg {string} str - The string to check.                                                                                                                               
+  @returns {boolean} - True iff palindrome.                                                                                                                              
+  @desc Case sensitive.                                                                                                                                                  
+                                                                                                                                                                         
+  Disclaimer: No parameter checking or edge-case 
+              consideration.                                                                                                          
+*/
+function isPalindrome(str) {
+  let reveresed = ""; 
+  for(let i = str.length - 1; i >= 0; i--) {
+      reveresed += str[i];
+  }
+  return (str === reveresed);
+} 
+</script>
+
+</html>
