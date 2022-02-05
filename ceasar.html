@@ -1,0 +1,57 @@
+<html>
+<head>
+    <title>In-Class Exercise 01</title>
+</head>
+<script>
+function decoderRing(rotation) {
+  const obj = {
+    encodeMap: {},
+    decodeMap: {}
+  };
+  
+  //return NULL object if rotation is outside paramters
+  if (rotation > 25 || rotation < 0) {
+    console.log("Invalid Rotation Value"); 
+    return null; 
+  }
+  // (1) Initialize encodeMap & (2) decodeMap
+  for (let i = 0; i < 26; i++) {
+    //encodemap init 
+    let em = String.fromCharCode(i + 97);
+    let x = (i + rotation) % 26;  
+    let emVal = String.fromCharCode(x + 97);
+    obj.encodeMap[String.fromCharCode(i+97)] = emVal; 
+    obj.decodeMap[(String.fromCharCode(x+97))] = em; 
+  }
+
+  // (2) Write functions for
+  // (2.1) encode
+  obj.encode = function(str) {
+    let encodedArr = str.split('').map((ch) => {
+      return obj.encodeMap[ch]; 
+    })
+    return encodedArr.join('');
+  }
+
+  // (2.2) decode
+  obj.decode = function(str) {
+    let decodedArr = str.split('').map((ch) => {
+      return obj.decodeMap[ch]; 
+    })
+    return decodedArr.join('');
+  }
+
+  return obj;
+}
+
+// Write THREE TESTS using console.assert.
+let tester = decoderRing(45); 
+console.assert(tester === null);
+let tester2 = decoderRing(3); 
+console.assert(JSON.stringify(tester2.encodeMap) ===
+JSON.stringify({"a" : "d", "b" : "e", "c" : "f", "d" : "g", "e" : "h", "f" : "i", "g" : "j", "h" : "k", 
+"i" : "l", "j" : "m", "k" : "n", "l" : "o", "m" : "p", "n" : "q", "o" : "r", "p" : "s", "q" : "t", "r" : "u",
+"s" : "v", "t" : "w", "u" : "x", "v" : "y", "w" : "z", "x" : "a", "y" : "b", "z" : "c"}));
+console.assert(tester2.encode('hello') == 'khoor');
+</script>
+</html>
