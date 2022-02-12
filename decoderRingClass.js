@@ -28,7 +28,7 @@ class decoder {
     }
 
     encode(str) {
-      let encodedArr = str.split('').map((ch) => {
+      let encodedArr = str.toString().split('').map((ch) => {
         return (ch === ' ') ? ' ' : this.encodeMap[ch]; 
       })
       return encodedArr.join('')
@@ -55,11 +55,5 @@ class decoderRing extends decoder {
     }
 }
 
-let d = new decoderRing('cdefghijklmnopqrstuvwxyzab')
-console.assert(d.encode('a z') === ('c b')); 
-d.cipher('bdefghijklmnopqrstuvwxyzac');
-console.assert(d.encode('a z') === ('b c'));
-let dr = new decoderRing(2);
-console.assert(dr.cipher() === cdefghijklmnopqrstuvwxyzab);
 
 

@@ -1,0 +1,55 @@
+<!DOCTYPE html> 
+<html lang="en">
+  <head>
+      <title>Encoder/decoder</title>
+      <script src="decoderRingClass.js"></script>
+      <script>
+          function doIt() {
+              const key = document.getElementById("key").value,
+                 encodeStr = document.getElementById("encode").value,
+                 encodedStr = document.getElementById('encoded'),
+                 decodeStr = document.getElementById('decode').value,
+                 decodedStr = document.getElementById('decoded')
+                 let d = new decoder(key);
+                 encodedResult = d.encode(encodeStr);
+                 decodedResult = d.decode(decodeStr);  
+            encoded.value = encodedResult; 
+            decoded.value = decodedResult;
+          }
+      </script>
+  </head>
+  <body>
+      <center>
+          <h1>Encoder/Decoder</h1>
+          <img
+            alt="Cypher Wheel"
+            src="https://github.com/emeryberger/web-programming/raw/master/decoder-ring.jpg"
+        />
+
+        <p></p>
+
+        <label for="input">Key:</label>
+        <input type="text" id="key" />
+
+        <p></p>
+
+        <form>
+            <label for="input">Text to encode:</label>
+            <input type="text" id="encode" />
+            <label for="encoded">Encoded:</label>
+            <input type="text" id="encoded" readonly="readonly" />
+            <input type="button" onClick="doIt()" value="Go" />
+        </form>
+
+        <p></p>
+
+        <form>
+            <label for="input">Text to decode:</label>
+            <input type="text" id="decode" />
+            <label for="output">Decoded:</label>
+            <input type="text" id="decoded" readonly="readonly" />
+            <input type="button" onClick="doIt()" value="Go" />
+        </form>
+      </center>
+  </body>
+</html>
